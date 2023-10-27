@@ -1,12 +1,14 @@
 <?php
 
+
+
 require_once __DIR__ . '/data/functions.php';
 
 $password_array = [];
 $generated_password = '';
 $password_length = '';
 
-$passwordComponents = 'abcdefghijklmnopqrstuvwxyz1234567890!_?+-$%';
+$passwordComponents = 'abcdefghijklmnopqABCDEFGHILMNOPREQICEQALCAZVNVEFJENCPZrstuvwxyz1234567890!_?+-$%ì\£=><W';
 
 if(isset($_POST['password'])){
 
@@ -38,7 +40,7 @@ if(isset($_POST['password'])){
 
   <main>
 
-    <form action="" method="POST">
+    <form action="landing.php" method="POST">
 
       <div class="container d-flex ">
   

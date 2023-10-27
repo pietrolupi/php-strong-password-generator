@@ -1,7 +1,10 @@
 <?php
 
+  session_start();
 
 function getRandomPassword($password_length, $passwordComponents){
+
+    $_SESSION['generatedPassword'] = '';
 
     $password_array = [];
     $generated_password = '';
@@ -25,6 +28,8 @@ function getRandomPassword($password_length, $passwordComponents){
   
     };   
 
-    return  $generated_password;
+    $_SESSION['generatedPassword'] = $generated_password;
+
+    return  $_SESSION['generatedPassword'];
   
 }
