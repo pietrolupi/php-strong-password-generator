@@ -39,19 +39,28 @@ $passwordComponents = [
 
 
 if(isset($_POST['password'])){
-
-  $generated_password = $_POST['password'];
-  $password_length = $_POST['password'];
   
-  for ($i = 0; $i < $password_length; $i++) {
-    $n = count($passwordComponents);
+  $password_length = $_POST['password'];
 
-    $password_array[] = $passwordComponents[rand(0, $n - 1)][rand(0, count($passwordComponents[$n - 1]) - 1)];
-}
+  if($password_length < 8 || $password_length > 32 || is_nan($password_length)){
+    
+    $generated_password = 'ATTENZIONE: inserire un NUMERO tra 8 e 32.';
+
+  }else{
+
+      $generated_password = $_POST['password'];
+      
+      for ($i = 0; $i < $password_length; $i++) {
+        $n = count($passwordComponents);
+    
+        $password_array[] = $passwordComponents[rand(0, $n - 1)][rand(0, count($passwordComponents[$n - 1]) - 1)];
+    }
+    
+    
+      $generated_password = implode('', $password_array);
 
 
-  $generated_password = implode('', $password_array);
-
+  };    
 
 };
 
