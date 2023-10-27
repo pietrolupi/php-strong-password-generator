@@ -1,68 +1,20 @@
 <?php
+
+require_once __DIR__ . '/data/functions.php';
+
 $password_array = [];
 $generated_password = '';
 $password_length = '';
 
-$passwordComponents = [
-  [
-    'a',
-    'b',
-    'c',
-    'd',
-    'e'
-  ],
-  
-  [
-    'A',
-    'B',
-    'C',
-    'D',
-    'E'
-  ],
-  
-  [
-    '/',
-    '?',
-    '!',
-    '%',
-    '$'
-  ],
-
-  [
-    '1',
-    '2',
-    '3',
-    '4',
-    '5',
-  ]
-  ];
-
+$passwordComponents = 'abcdefghijklmnopqrstuvwxyz1234567890!_?+-$%';
 
 if(isset($_POST['password'])){
+
+    $password_length = $_POST['password'];
   
-  $password_length = $_POST['password'];
+    getRandomPassword($password_length, $passwordComponents);
 
-  if($password_length < 8 || $password_length > 32 || is_nan($password_length)){
-    
-    $generated_password = 'ATTENZIONE: inserire un NUMERO tra 8 e 32.';
-
-  }else{
-
-      $generated_password = $_POST['password'];
-      
-      for ($i = 0; $i < $password_length; $i++) {
-        $n = count($passwordComponents);
-    
-        $password_array[] = $passwordComponents[rand(0, $n - 1)][rand(0, count($passwordComponents[$n - 1]) - 1)];
-    }
-    
-    
-      $generated_password = implode('', $password_array);
-
-
-  };    
-
-};
+}
 
 
 ?>
@@ -101,7 +53,7 @@ if(isset($_POST['password'])){
 
       </div>
       <div class="text-center mt-5 "><h1>La password generata è: <br> 
-          <?php echo $generated_password ?> <br>
+          <?php echo getRandomPassword($password_length, $passwordComponents) ?> <br>
           <?php echo $password_length ?>
         </h1>
       </div>
