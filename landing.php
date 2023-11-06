@@ -1,5 +1,9 @@
 <?php
 session_start();
+
+
+$password = $_SESSION['generatedPassword'];
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,6 +13,6 @@ session_start();
   <title>Landing</title>
 </head>
 <body>
-  <h1>LA TUA PASSWORD è : <?php echo $_SESSION['generatedPassword'] ?> </h1>
+  <h1>LA TUA PASSWORD è: <?php echo $password ?> </h1>
 </body>
 </html>
